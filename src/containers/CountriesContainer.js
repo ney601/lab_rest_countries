@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CountriesList from "../components/CountriesList";
 
 const CountriesContainer = () => {
 
@@ -11,7 +12,11 @@ const CountriesContainer = () => {
         setCountries(jsonData);
     }
 
-    const addVisitedCountries = 
+    const addVisitedCountries = (country) => {
+        console.log(country)
+        setVisitedCountries([...visitedCountries, country]);
+        
+      };
 
     useEffect(() => {
         loadCountries();
@@ -20,7 +25,7 @@ const CountriesContainer = () => {
     return ( 
         <>
             <h1>Country Bucket List</h1>
-            <CountriesList countries={countries} visitedCountries={visitedCountries} />
+            <CountriesList countries={countries} visitedCountries={visitedCountries} addVisitedCountries={addVisitedCountries} />
         </>
      );
 }
